@@ -6,9 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,46 +118,52 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public List<Movie> findByGenre(String genre) {
-        return null;
+        if (!StringUtils.hasLength(genre))
+            return new ArrayList<>();
+        return this.movieRepository.findByGenre(genre);
     }
 
     @Override
     public List<Movie> findByDirectorAndYear(String director, Integer year) {
-        return null;
+        if (!StringUtils.hasLength(director) || year!=null)
+            return new ArrayList<>();
+        return this.movieRepository.findByDirectorAndYear(director, year);
     }
 
     @Override
     public List<Movie> findByTitleContaining(String title) {
-        return null;
+        return this.movieRepository.findByTitleContaining(title);
     }
 
     @Override
     public List<Movie> findByDurationGreaterThanEqual(Duration duration) {
-        return null;
+        if (duration==null || duration.isNegative() || duration.isZero())
+            return new ArrayList<>();
+        return this.movieRepository.findByDurationGreaterThanEqual(duration);
     }
 
     @Override
     public List<Movie> findByYearIn(List<Integer> years) {
-        return null;
+        return this.movieRepository.findByYearIn(years);
     }
 
     @Override
     public List<Movie> findByYearBetween(Integer startYear, Integer endYear) {
-        return null;
+        return this.movieRepository.findByYearBetween(startYear, endYear);
     }
 
     @Override
     public List<Movie> findByReleaseDateBetween(LocalDate startDate, LocalDate endDate) {
-        return null;
+        return this.movieRepository.findByReleaseDateBetween(startDate, endDate);
     }
 
     @Override
     public List<Movie> findByAvailableTrue() {
-        return null;
+        return this.movieRepository.findByAvailableTrue();
     }
 
     @Override
     public Long deleteAllByAvailableFalse() {
-        return null;
+        return this.movieRepository.deleteAllByAvailableFalse();
     }
 }
