@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @Entity //maps Movie objects to a DB table
 @Table(name = "movies")
@@ -95,6 +97,12 @@ public class Movie {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    public boolean hasNullFields(Movie movie) {
+        return Stream.of(movie.title, movie.director, movie.genre, movie.rating,
+                        movie.duration, movie.year, movie.releaseDate, movie.available)
+                .anyMatch(Objects::isNull);
     }
 
     @Override
