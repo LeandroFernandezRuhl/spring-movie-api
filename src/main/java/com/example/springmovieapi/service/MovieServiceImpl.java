@@ -88,6 +88,20 @@ public class MovieServiceImpl implements MovieService{
         return true;
     }
 
+    public void deleteById(Long id) {
+        log.info("Deleting movie by ID");
+        if (id == null || id <= 0) {
+            log.warn("Trying to delete a movie with a wrong ID");
+            return;
+        }
+
+        try {
+            this.movieRepository.deleteById(id);
+        } catch (Exception e) {
+            log.error("Error trying to delete movie by ID {}", id, e);
+        }
+    }
+
     @Override
     public void deleteAll() {
         log.info("Deleting all movies");
