@@ -1,5 +1,6 @@
 package com.example.springmovieapi.domain;
 
+import com.example.springmovieapi.DurationConverter;
 import jakarta.persistence.*;
 
 import java.time.Duration;
@@ -19,6 +20,7 @@ public class Movie {
     private String director;
     private String genre;
     private Float rating;
+    @Convert(converter = DurationConverter.class)
     private Duration duration;
     private Integer year;
     private LocalDate releaseDate;
