@@ -1,4 +1,4 @@
-package security.service;
+package com.example.springmovieapi.security.service;
 
 import com.example.springmovieapi.domain.User;
 import com.example.springmovieapi.repository.UserRepository;

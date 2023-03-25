@@ -1,5 +1,6 @@
-package security.jwt;
+package com.example.springmovieapi.security.jwt;
 
+import com.example.springmovieapi.security.service.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +15,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import security.service.UserDetailsServiceImpl;
 
 import java.io.IOException;
 
@@ -35,14 +35,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     /**
      * An instance of the JwtTokenUtil class used to validate and extract information from JWT tokens
      */
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
     /**
      * An instance of the UserDetailsService class used to load user details from the database
      */
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 

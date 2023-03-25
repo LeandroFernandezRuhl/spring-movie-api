@@ -1,4 +1,4 @@
-package security.jwt;
+package com.example.springmovieapi.security.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
