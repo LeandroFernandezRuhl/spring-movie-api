@@ -22,11 +22,11 @@ public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
 
     /**
      * Sends an HTTP error response with the status code 401 Unauthorized and a message indicating that the client is not authorized to access the requested resource.
-     * @param httpServletRequest An object representing the HTTP request that caused the authentication exception
-     * @param httpServletResponse An object representing the HTTP response that will be sent back to the client
-     * @param e The AuthenticationException that was thrown
-     * @throws IOException  If an input or output exception occurs
-     * @throws ServletException If there is an error in the servlet container or if the request cannot be handled for some reason
+     * @param httpServletRequest an object representing the HTTP request that caused the authentication exception
+     * @param httpServletResponse an object representing the HTTP response that will be sent back to the client
+     * @param e the AuthenticationException that was thrown
+     * @throws IOException  if an input or output exception occurs
+     * @throws ServletException if there is an error in the servlet container or if the request cannot be handled for some reason
      */
     @Override
     public void commence(HttpServletRequest httpServletRequest,
