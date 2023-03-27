@@ -72,7 +72,7 @@ public class SecurityConfig {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll()
+                .authorizeHttpRequests().requestMatchers("/api/auth/**", "/swagger-ui/**","/v3/api-docs/**").permitAll()
                 .requestMatchers("/").permitAll()
                 .anyRequest().authenticated();
 
@@ -94,7 +94,7 @@ public class SecurityConfig {
                         .allowedMethods("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH")
                         .allowedHeaders("Access-Control-Allow-Origin", "X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization")
                         .allowCredentials(true)
-                        .allowedOriginPatterns("http://localhost:4200", "https://angular-springboot1-beta.vercel.app");
+                        .allowedOriginPatterns("http://localhost:4200");
             }
         };
     }
