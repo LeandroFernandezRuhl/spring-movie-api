@@ -1,7 +1,9 @@
 package com.example.springmovieapi.security;
 
-import com.example.springmovieapi.security.jwt.JwtAuthEntryPoint;
+import com.example.springmovieapi.security.jwt.handler.CustomAccessDeniedHandler;
+import com.example.springmovieapi.security.jwt.handler.JwtAuthEntryPoint;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,7 +33,11 @@ import com.example.springmovieapi.security.jwt.JwtRequestFilter;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final JwtAuthEntryPoint unauthorizedHandler;
+    @Autowired
+    private JwtAuthEntryPoint unauthorizedHandler;
+
+    @Autowired
+    private CustomAccessDeniedHandler accessDeniedHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -81,10 +87,12 @@ public class SecurityConfig {
         return http.build();
     }
 
+    /*
     /**
      * Configures CORS settings for incoming requests.
      * @return a WebMvcConfigurer object
      */
+    /*
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
@@ -97,6 +105,6 @@ public class SecurityConfig {
                         .allowedOriginPatterns("http://localhost:4200");
             }
         };
-    }
+    } */
 
 }
