@@ -1,4 +1,4 @@
-package com.example.springmovieapi.security.jwt;
+package com.example.springmovieapi.security.jwt.handler;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
