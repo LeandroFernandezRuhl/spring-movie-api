@@ -1,6 +1,6 @@
-package com.example.springmovieapi.domain;
+package com.example.springmovieapi.entities;
 
-import com.example.springmovieapi.DurationConverter;
+import com.example.springmovieapi.service.DurationConverter;
 import jakarta.persistence.*;
 
 import java.time.Duration;

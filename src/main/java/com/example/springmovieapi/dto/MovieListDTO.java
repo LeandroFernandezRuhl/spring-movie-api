@@ -1,6 +1,6 @@
 package com.example.springmovieapi.dto;
 
-import com.example.springmovieapi.domain.Movie;
+import com.example.springmovieapi.entities.Movie;
 
 import java.util.List;
 

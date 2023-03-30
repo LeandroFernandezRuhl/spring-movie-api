@@ -1,6 +1,6 @@
 package com.example.springmovieapi.service;
 
-import com.example.springmovieapi.domain.Movie;
+import com.example.springmovieapi.entities.Movie;
 import com.example.springmovieapi.repository.MovieRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

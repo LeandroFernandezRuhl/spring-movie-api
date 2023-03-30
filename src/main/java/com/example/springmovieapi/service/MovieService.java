@@ -1,6 +1,6 @@
 package com.example.springmovieapi.service;
 
-import com.example.springmovieapi.domain.Movie;
+import com.example.springmovieapi.entities.Movie;
 
 import java.time.Duration;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package com.example.springmovieapi;
+package com.example.springmovieapi.service;
 
 import jakarta.persistence.*;
 import java.time.Duration;

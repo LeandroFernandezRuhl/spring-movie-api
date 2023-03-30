@@ -1,6 +1,6 @@
 package com.example.springmovieapi.rest;
 
-import com.example.springmovieapi.domain.Movie;
+import com.example.springmovieapi.entities.Movie;
 import com.example.springmovieapi.dto.CountDTO;
 import com.example.springmovieapi.dto.MovieListDTO;
 import com.example.springmovieapi.service.MovieService;
