@@ -1,6 +1,6 @@
 package com.example.springmovieapi.repository;
 
-import com.example.springmovieapi.domain.User;
+import com.example.springmovieapi.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

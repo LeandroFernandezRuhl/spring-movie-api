@@ -1,0 +1,19 @@
+The three classes UnauthorizedEntryPoint, CustomAccessDeniedHandler, and RestAuthenticationFailureHandler work together to
+handle different types of authentication and authorization failures.
+
+When a user tries to access a protected resource without providing proper authentication credentials, the UnauthorizedEntryPoint
+class is responsible for returning an HTTP 401 Unauthorized response, indicating that the user is not authorized to access the resource.
+
+If the user provides valid authentication credentials but is still not authorized to access the resource (e.g., they don't have the proper role or permissions),
+the CustomAccessDeniedHandler class is responsible for returning an HTTP 403 Forbidden response. This class can also be used to customize the response message or format.
+
+Finally, if there is an error during the authentication process (e.g., invalid credentials or expired tokens), the RestAuthenticationFailureHandler class
+is responsible for returning an HTTP 401 Unauthorized response. This class can also be used to customize the response message or format.
+
+By configuring these three classes, you can handle different types of authentication and
+authorization failures and customize the response messages and formats to meet your specific needs.
+
+
+
+
+

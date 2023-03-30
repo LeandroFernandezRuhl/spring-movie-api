@@ -1,30 +1,35 @@
 package com.example.springmovieapi.rest;
 
-import com.example.springmovieapi.domain.User;
+import com.example.springmovieapi.entities.Role;
+import com.example.springmovieapi.entities.User;
 import com.example.springmovieapi.repository.UserRepository;
 import com.example.springmovieapi.security.payload.JwtResponse;
 import com.example.springmovieapi.security.payload.LoginRequest;
 import com.example.springmovieapi.security.payload.MessageResponse;
 import com.example.springmovieapi.security.payload.RegisterRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.springmovieapi.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.springmovieapi.security.jwt.JwtTokenUtil;
 
+import java.util.HashSet;
+import java.util.Set;
+
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-    private final AuthenticationManager authManager;
-    private final UserRepository userRepository;
+    private AuthenticationManager authManager;
+    private UserRepository userRepository;
+
+    @Autowired
+    private RoleService roleService;
     private final PasswordEncoder encoder;
     private final JwtTokenUtil jwtTokenUtil;
 
@@ -65,8 +70,20 @@ public class AuthController {
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
-        userRepository.save(user);
 
+        // Assign user role
+        Role role = roleService.findByName("USER");
+        Set<Role> roleSet = new HashSet<>();
+        roleSet.add(role);
+
+        // Assign admin role if eligible
+        if(user.getEmail().split("@")[1].equals("admin.edu")){
+            role = roleService.findByName("ADMIN");
+            roleSet.add(role);
+        }
+
+        user.setRoles(roleSet);
+        userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered succesfully!"));
     }
 }
