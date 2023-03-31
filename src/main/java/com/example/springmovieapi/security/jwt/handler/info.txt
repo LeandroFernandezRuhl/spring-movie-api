@@ -1,7 +1,7 @@
-The three classes UnauthorizedEntryPoint, CustomAccessDeniedHandler, and RestAuthenticationFailureHandler work together to
+The three classes JwtAuthEntryPoint, CustomAccessDeniedHandler, and RestAuthenticationFailureHandler work together to
 handle different types of authentication and authorization failures.
 
-When a user tries to access a protected resource without providing proper authentication credentials, the UnauthorizedEntryPoint
+When a user tries to access a protected resource without providing proper authentication credentials, the JwtAuthEntryPoint
 class is responsible for returning an HTTP 401 Unauthorized response, indicating that the user is not authorized to access the resource.
 
 If the user provides valid authentication credentials but is still not authorized to access the resource (e.g., they don't have the proper role or permissions),

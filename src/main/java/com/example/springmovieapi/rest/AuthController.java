@@ -10,6 +10,7 @@ import com.example.springmovieapi.security.payload.RegisterRequest;
 import com.example.springmovieapi.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -85,5 +86,23 @@ public class AuthController {
         user.setRoles(roleSet);
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered succesfully!"));
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/hello-admin")
+    public String adminPing(){
+        return "Only Admins can read this";
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @GetMapping("/hello-admin-user")
+    public String adminUser(){
+        return "Only Admins and Users can read this";
+    }
+
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/hello-user")
+    public String userPing(){
+        return "Any User can read this";
     }
 }
