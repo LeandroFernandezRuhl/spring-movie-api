@@ -86,9 +86,6 @@ Include the token in the Authorization header of subsequent requests to the API:
 }
 ```
 
-### Pendent implementation
-* To search for movies by genre, director, title, year, duration, release date, or availability, send a GET request to /api/movies/search with the appropriate query parameter(s). For example, to search for movies by genre, send a GET request to /api/movies/search?genre=Drama.
-
 ## User Endpoints
 ### REGISTER
 To register a new user, send a POST request to /api/auth/register with the user details in the request body:
@@ -109,7 +106,7 @@ To login, send a POST request to /api/auth/login with the user details in the re
 ```
 
 ## Additional Information
-For a full list of endpoints and their usage, please refer to the Swagger UI documentation available at http://localhost:8080/swagger-ui.html.
+For a full list of endpoints and their usage, please refer to the Swagger UI documentation available at http://localhost:8080/swagger-ui.html once you're running the application.
 
 ## Built With
 * Spring Boot
